@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="basic_Login.MainPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label
+                Text="Amber Lawson"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                HorizontalOptions="Center" />
+            <Label
+                Text="Login Screen"
+                FontAttributes="Bold,Italic"
+                HorizontalOptions="Center" />
+            <Label Text="User Name" />
+            <Entry x:Name="txtUserName" />
+            <Label Text="Password" />
+            <Entry x:Name="txtPassword"
+                   IsPassword="True" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Text="Login"
+                    Grid.Column="0"
+                    Clicked="OnLoginClicked" />
+                <Button
+                    Text="Cancel"
+                    Grid.Column="1"
+                    Clicked="OnCancelClicked" />
+            </Grid>
+            <Label
+                x:Name="lblMessage"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
