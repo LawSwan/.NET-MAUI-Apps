@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MauiPageNavigation.MessagePage"
+    Title="MessagePage">
+
+    <VerticalStackLayout>
+        <Label
+            Text=""
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            x:Name="lblMessage" />
+
+        <Button
+            Text="Go Back"
+            Clicked="OnGoBackClicked"
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
