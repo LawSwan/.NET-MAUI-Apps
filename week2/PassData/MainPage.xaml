@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PassData.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="18">
+            <Label
+                Text="Your Name Add and Subtract"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label Text="First Value" />
+            <Entry
+                x:Name="FirstValueEntry"
+                Placeholder="Enter the first value"
+                Keyboard="Numeric" />
+
+            <Label Text="Second Value" />
+            <Entry
+                x:Name="SecondValueEntry"
+                Placeholder="Enter the second value"
+                Keyboard="Numeric" />
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button
+                    Grid.Column="0"
+                    Text="Addition"
+                    Clicked="OnAdditionClicked" />
+                <Button
+                    Grid.Column="1"
+                    Text="Subtraction"
+                    Clicked="OnSubtractionClicked" />
+            </Grid>
+
+            <Label
+                x:Name="StatusLabel"
+                FontSize="24"
+                Text=""
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PassData (Mac Catalyst)",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/PassData.csproj"
+        }
+    ]
+}
