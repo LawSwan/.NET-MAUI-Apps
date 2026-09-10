@@ -1,0 +1,15 @@
+# Build output
+bin/
+obj/
+publish/
+
+# macOS
+.DS_Store
+
+# IDE
+.vs/
+*.user
+*.userprefs
+
+# MAUI / iOS
+*.binlog

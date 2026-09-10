@@ -1,0 +1,21 @@
+{
+    // Requires the "​.NET MAUI" VS Code extension (ms-dotnettools.dotnet-maui), which is installed.
+    // Pick the iOS simulator from the status bar ( {} .NET MAUI  |  device selector ) before running.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "RSVP: .NET MAUI (iOS)",
+            "type": "maui",
+            "request": "launch",
+            "preLaunchTask": "maui: Build",
+            "project": "${workspaceFolder}/RSVPProject.csproj"
+        },
+        {
+            "name": "RSVP: iOS Simulator (no debugger)",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "echo 'Running via task: Run RSVP iOS Simulator'",
+            "preLaunchTask": "Run RSVP iOS Simulator"
+        }
+    ]
+}
