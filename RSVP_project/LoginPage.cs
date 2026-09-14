@@ -6,9 +6,12 @@ public sealed class LoginPage : ContentPage
     readonly Entry password = Field("Password", Keyboard.Default, true);
     readonly Label message = MessageLabel();
 
+    const string DemoHint = "Demo credentials: demo@rsvp.app / rsvp123";
+
     public LoginPage()
     {
         Title = "Log in";
+        ShowHint(DemoHint);
         Content = new ScrollView { Content = FormLayout("Welcome back", "Use the demo account to explore the logged-in experience.",
             email, password, message,
             Button("Log in", OnLogin),
@@ -20,7 +23,7 @@ public sealed class LoginPage : ContentPage
     {
         if (string.IsNullOrWhiteSpace(email.Text) || string.IsNullOrWhiteSpace(password.Text))
         {
-            message.Text = "Enter your email and password to continue.";
+            ShowError("Enter your email and password to continue.");
             return;
         }
 
@@ -31,7 +34,21 @@ public sealed class LoginPage : ContentPage
             return;
         }
 
-        message.Text = "Demo credentials: demo@rsvp.app / rsvp123";
+        ShowError(DemoHint);
+    }
+
+    // Shown up front, in the muted purple used for secondary text — not an error yet.
+    void ShowHint(string text)
+    {
+        message.Text = text;
+        message.TextColor = Color.FromArgb("#8570D6");
+    }
+
+    // Shown after a failed attempt, in the error color.
+    void ShowError(string text)
+    {
+        message.Text = text;
+        message.TextColor = Color.FromArgb("#F27F6B");
     }
 
     async void OnGuest(object? sender, EventArgs args)
