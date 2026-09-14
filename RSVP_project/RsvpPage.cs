@@ -5,13 +5,12 @@ public sealed class RsvpPage : ContentPage
     readonly Entry name = LoginPage.Field("Your name", Keyboard.Default);
     readonly Entry email = LoginPage.Field("Email", Keyboard.Email);
     readonly Entry guests = LoginPage.Field("Number of guests", Keyboard.Numeric);
-    readonly Editor notes = new() { Placeholder = "Notes for the host", HeightRequest = 100, TextColor = Colors.White, PlaceholderColor = Color.FromArgb("#718098"), BackgroundColor = Color.FromArgb("#172337") };
+    readonly Editor notes = new() { Placeholder = "Notes for the host", HeightRequest = 100, TextColor = Colors.Black, PlaceholderColor = Color.FromArgb("#8570D6"), BackgroundColor = Color.FromArgb("#EDE7FB") };
     readonly Label message = LoginPage.MessageLabel();
 
     public RsvpPage(EventItem item)
     {
         Title = "RSVP";
-        BackgroundColor = Color.FromArgb("#101827");
         if (AppState.IsLoggedIn)
         {
             name.Text = AppState.DisplayName;

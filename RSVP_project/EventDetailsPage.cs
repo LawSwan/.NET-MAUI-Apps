@@ -8,16 +8,31 @@ public sealed class EventDetailsPage : ContentPage
     {
         eventItem = item;
         Title = item.Title;
-        BackgroundColor = Colors.Transparent;
-        var details = new VerticalStackLayout { Padding = new Thickness(24, 28), Spacing = 14 };
-        details.Add(new Label { Text = item.Title, TextColor = Colors.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
-        details.Add(new Label { Text = $"{item.Date}  •  {item.Time}", TextColor = Color.FromArgb("#F2B84B"), FontSize = 16 });
-        details.Add(new Label { Text = item.Location, TextColor = Color.FromArgb("#AAB6C7"), FontSize = 15 });
-        details.Add(new BoxView { HeightRequest = 1, Color = Color.FromArgb("#29384D"), Margin = new Thickness(0, 8) });
-        details.Add(new Label { Text = item.Description, TextColor = Colors.White, FontSize = 17, LineBreakMode = LineBreakMode.WordWrap });
-        details.Add(new Label { Text = $"Hosted by {item.Host}", TextColor = Color.FromArgb("#AAB6C7"), FontSize = 14 });
-        details.Add(LoginPage.Button("RSVP for this event", async (_, _) => await Navigation.PushAsync(new RsvpPage(item))));
-        details.Add(LoginPage.Button("Back to events", async (_, _) => await Navigation.PopAsync(), "SecondaryButton"));
-        Content = LoginPage.WithBackground(new ScrollView { Content = details });
+
+        var header = new Border
+        {
+            Background = (Brush)Application.Current!.Resources["PrimaryGradientBrush"],
+            Stroke = Colors.Transparent,
+            Padding = new Thickness(24, 32, 24, 24)
+        };
+        header.Content = new VerticalStackLayout
+        {
+            Spacing = 6,
+            Children =
+            {
+                new Label { Text = item.Title, TextColor = Colors.White, FontSize = 28, FontAttributes = FontAttributes.Bold },
+                new Label { Text = $"{item.Date}  •  {item.Time}", TextColor = Colors.White, Opacity = 0.9, FontSize = 15 },
+                new Label { Text = item.Location, TextColor = Colors.White, Opacity = 0.75, FontSize = 14 }
+            }
+        };
+
+        var body = new VerticalStackLayout { Padding = new Thickness(24, 20), Spacing = 14 };
+        body.Add(new BoxView { HeightRequest = 1 });
+        body.Add(new Label { Text = item.Description, TextColor = Colors.Black, FontSize = 17, LineBreakMode = LineBreakMode.WordWrap });
+        body.Add(new Label { Text = $"Hosted by {item.Host}", TextColor = Color.FromArgb("#8570D6"), FontSize = 14 });
+        body.Add(LoginPage.Button("RSVP for this event", async (_, _) => await Navigation.PushAsync(new RsvpPage(item))));
+        body.Add(LoginPage.Button("Back to events", async (_, _) => await Navigation.PopAsync(), "SecondaryButton"));
+
+        Content = new ScrollView { Content = new VerticalStackLayout { Children = { header, body } } };
     }
 }

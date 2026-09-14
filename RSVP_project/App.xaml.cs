@@ -6,9 +6,10 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		// The app is designed for a single dark palette; pin it so the themed
-		// styles (nav bar, pickers, etc.) don't fall back to the light variants.
-		UserAppTheme = AppTheme.Dark;
+		// The app is designed for a single clean white + purple look; pin the
+		// theme so the styles (nav bar, pickers, etc.) always render that way
+		// regardless of the device's system theme.
+		UserAppTheme = AppTheme.Light;
 	}
 
 	protected override Window CreateWindow(IActivationState? activationState)

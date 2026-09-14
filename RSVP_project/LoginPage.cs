@@ -9,12 +9,11 @@ public sealed class LoginPage : ContentPage
     public LoginPage()
     {
         Title = "Log in";
-        BackgroundColor = Colors.Transparent;
-        Content = WithBackground(FormLayout("Welcome back", "Use the demo account to explore the logged-in experience.",
+        Content = new ScrollView { Content = FormLayout("Welcome back", "Use the demo account to explore the logged-in experience.",
             email, password, message,
             Button("Log in", OnLogin),
             Button("Create an account", async (_, _) => await Navigation.PushAsync(new AddUserPage()), "TextButton"),
-            Button("Continue as guest", OnGuest, "SecondaryButton")));
+            Button("Continue as guest", OnGuest, "SecondaryButton")) };
     }
 
     async void OnLogin(object? sender, EventArgs args)
@@ -46,9 +45,9 @@ public sealed class LoginPage : ContentPage
         Placeholder = placeholder,
         Keyboard = keyboard,
         IsPassword = secret,
-        BackgroundColor = Color.FromArgb("#172337"),
-        TextColor = Colors.White,
-        PlaceholderColor = Color.FromArgb("#f7f8f8"),
+        BackgroundColor = Color.FromArgb("#EDE7FB"),
+        TextColor = Colors.Black,
+        PlaceholderColor = Color.FromArgb("#8570D6"),
         Margin = new Thickness(0, 4)
     };
 
@@ -62,22 +61,31 @@ public sealed class LoginPage : ContentPage
         return button;
     }
 
-    internal static VerticalStackLayout FormLayout(string heading, string subtitle, params View[] controls)
+    /// <summary>
+    /// Shared form shell used by every account/RSVP form: a purple-gradient
+    /// header (heading + subtitle) over a plain white body holding the fields.
+    /// </summary>
+    internal static View FormLayout(string heading, string subtitle, params View[] controls)
     {
-        var layout = new VerticalStackLayout { Padding = new Thickness(24, 30), Spacing = 12 };
-        layout.Add(new Label { Text = heading, TextColor = Colors.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
-        layout.Add(new Label { Text = subtitle, TextColor = Color.FromArgb("#AAB6C7"), FontSize = 15, Margin = new Thickness(0, 0, 0, 12) });
-        foreach (var control in controls) layout.Add(control);
-        return layout;
-    }
-
-    internal static View WithBackground(View content)
-    {
-        var background = new Image
+        var header = new Border
         {
-            Source = "rsvp_background.svg",
-            Aspect = Aspect.AspectFill
+            Background = (Brush)Application.Current!.Resources["PrimaryGradientBrush"],
+            Stroke = Colors.Transparent,
+            Padding = new Thickness(24, 56, 24, 28)
         };
-        return new Grid { Children = { background, new ScrollView { Content = content } } };
+        header.Content = new VerticalStackLayout
+        {
+            Spacing = 6,
+            Children =
+            {
+                new Label { Text = heading, TextColor = Colors.White, FontSize = 28, FontAttributes = FontAttributes.Bold },
+                new Label { Text = subtitle, TextColor = Colors.White, Opacity = 0.85, FontSize = 15 }
+            }
+        };
+
+        var body = new VerticalStackLayout { Padding = new Thickness(24, 24), Spacing = 12 };
+        foreach (var control in controls) body.Add(control);
+
+        return new VerticalStackLayout { Children = { header, body } };
     }
 }

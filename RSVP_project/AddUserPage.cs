@@ -11,7 +11,6 @@ public sealed class AddUserPage : ContentPage
     public AddUserPage()
     {
         Title = "Create account";
-        BackgroundColor = Color.FromArgb("#101827");
         Content = new ScrollView
         {
             Content = LoginPage.FormLayout("Create your account", "A few details are all you need to start making plans.",

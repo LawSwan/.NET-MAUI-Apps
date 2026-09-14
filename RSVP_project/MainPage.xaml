@@ -1,20 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RSVPProject.MainPage"
              NavigationPage.HasNavigationBar="False">
-    <Grid BackgroundColor="#101827" RowDefinitions="Auto,*,Auto">
-        <VerticalStackLayout Grid.Row="0" Padding="24,36,24,18" Spacing="6">
-            <Label Text="RSVP" TextColor="#F2B84B" FontSize="18" FontAttributes="Bold" />
-            <Label Text="Make room for good things." TextColor="White" FontSize="32" FontAttributes="Bold" />
-            <Label Text="Discover gatherings, bring your people, and keep every plan in one place." TextColor="#AAB6C7" FontSize="15" />
-        </VerticalStackLayout>
+    <Grid BackgroundColor="{StaticResource White}" RowDefinitions="Auto,*,Auto">
+        <Border Grid.Row="0" Background="{StaticResource PrimaryGradientBrush}" Stroke="Transparent" Padding="24,56,24,28">
+            <VerticalStackLayout Spacing="6">
+                <Label Text="RSVP" TextColor="{StaticResource White}" Opacity="0.85" FontSize="18" FontAttributes="Bold" />
+                <Label Text="Make room for good things." TextColor="{StaticResource White}" FontSize="32" FontAttributes="Bold" />
+                <Label Text="Discover gatherings, bring your people, and keep every plan in one place." TextColor="{StaticResource White}" Opacity="0.85" FontSize="15" />
+            </VerticalStackLayout>
+        </Border>
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="24,18,24,24" Spacing="14">
-                <Border Stroke="#29384D" BackgroundColor="#172337" StrokeShape="RoundRectangle 18" Padding="20">
+                <Border Stroke="{StaticResource Secondary}" BackgroundColor="{StaticResource Secondary}" StrokeShape="RoundRectangle 18" Padding="20">
                     <VerticalStackLayout Spacing="10">
-                        <Label Text="Your next event starts here" TextColor="White" FontSize="22" FontAttributes="Bold" />
-                        <Label Text="Sign in for your personalized plans, or browse as a guest." TextColor="#AAB6C7" />
+                        <Label Text="Your next event starts here" TextColor="{StaticResource Black}" FontSize="22" FontAttributes="Bold" />
+                        <Label Text="Sign in for your personalized plans, or browse as a guest." TextColor="{StaticResource SecondaryDarkText}" />
                         <Button Text="Log in" Clicked="OnLoginClicked" />
                         <Button Text="Continue as guest" Clicked="OnGuestClicked" Style="{StaticResource SecondaryButton}" />
                     </VerticalStackLayout>
@@ -22,6 +24,6 @@
                 <Button Text="Create an account" Clicked="OnCreateAccountClicked" Style="{StaticResource TextButton}" />
             </VerticalStackLayout>
         </ScrollView>
-        <Label Grid.Row="2" Text="Plan together. Show up together." TextColor="#68788E" HorizontalOptions="Center" Padding="0,14,0,24" />
+        <Label Grid.Row="2" Text="Plan together. Show up together." TextColor="{StaticResource SecondaryDarkText}" HorizontalOptions="Center" Padding="0,14,0,24" />
     </Grid>
 </ContentPage>
