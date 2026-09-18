@@ -1,0 +1,1 @@
+-v --force --timestamp=none --sign - /Users/amber/School/maui/week3/3.3/bin/Debug/net10.0-ios/iossimulator-arm64/ItemCatalog.app/libSystem.Net.Security.Native.dylib
