@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RSVP Data Design</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --bg:#fbfaff; --surface:#ffffff; --surface-alt:#f2eefb;
+    --ink:#1e1533; --ink-muted:#6b5f8c; --border:#ded3f5;
+    --accent:#512bd4; --accent-dark:#2b0b98; --accent-soft:#efe9fb;
+    --mono-bg:#f6f2fd; --ok:#2f8f5b; --shadow: 0 1px 2px rgba(30,21,51,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#130f1f; --surface:#1c1730; --surface-alt:#241c3d;
+      --ink:#f1ecfb; --ink-muted:#a99bd1; --border:#362a57;
+      --accent:#a892f5; --accent-dark:#d3c5ff; --accent-soft:#291f47;
+      --mono-bg:#1f1837; --ok:#5cc98c; --shadow: 0 1px 2px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#130f1f; --surface:#1c1730; --surface-alt:#241c3d;
+    --ink:#f1ecfb; --ink-muted:#a99bd1; --border:#362a57;
+    --accent:#a892f5; --accent-dark:#d3c5ff; --accent-soft:#291f47;
+    --mono-bg:#1f1837; --ok:#5cc98c; --shadow: 0 1px 2px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans",system-ui,sans-serif; padding-inline:20px; padding-block:48px}
+  .page{max-width:840px; margin:0 auto; display:flex; flex-direction:column; gap:44px}
+
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif; text-wrap:balance; margin:0; color:var(--ink)}
+  h1{font-size:clamp(28px,5vw,40px); font-weight:600; letter-spacing:-.01em}
+  h2{font-size:24px; font-weight:600}
+  h3{font-size:15px; font-weight:600}
+  p{line-height:1.65; margin:0}
+  code, .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+  header.doc{display:flex; flex-direction:column; gap:14px; padding-bottom:28px; border-bottom:1px solid var(--border)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); display:flex; gap:10px; align-items:center}
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--accent)}
+  .meta{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-muted)}
+  .meta b{color:var(--ink); font-weight:500}
+  .lede{font-size:16px; color:var(--ink-muted); max-width:62ch; line-height:1.7}
+
+  section{display:flex; flex-direction:column; gap:16px}
+  .section-head{display:flex; align-items:baseline; gap:10px}
+  .section-num{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent); font-weight:500}
+
+  .diagram{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px; box-shadow:var(--shadow); overflow-x:auto}
+
+  .table-card{background:var(--surface); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow)}
+  .table-card-head{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 20px; background:var(--surface-alt); border-bottom:1px solid var(--border); flex-wrap:wrap}
+  .table-card-head .name{font-family:"IBM Plex Mono",monospace; font-size:16px; font-weight:600; color:var(--ink)}
+  .table-card-head .desc{font-size:13px; color:var(--ink-muted)}
+  .fields{width:100%; border-collapse:collapse; font-size:13.5px}
+  .fields th{text-align:left; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-muted); font-weight:500; padding:10px 20px; border-bottom:1px solid var(--border)}
+  .fields td{padding:10px 20px; border-bottom:1px solid var(--border); vertical-align:top}
+  .fields tr:last-child td{border-bottom:none}
+  .fields .fname{font-family:"IBM Plex Mono",monospace; font-weight:500}
+  .fields .ftype{font-family:"IBM Plex Mono",monospace; color:var(--accent-dark); white-space:nowrap}
+  .fields .fnote{color:var(--ink-muted)}
+  .badge{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10px; font-weight:600; letter-spacing:.03em; padding:2px 6px; border-radius:5px; margin-right:4px; white-space:nowrap}
+  .badge.pk{background:var(--accent); color:#fff}
+  .badge.fk{background:var(--accent-soft); color:var(--accent-dark); border:1px solid var(--border)}
+  .badge.uk{background:var(--mono-bg); color:var(--ink-muted); border:1px solid var(--border)}
+  .badge.null{background:transparent; color:var(--ink-muted); border:1px dashed var(--border)}
+
+  .rel-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px}
+  .rel-card{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px 18px; display:flex; flex-direction:column; gap:8px; box-shadow:var(--shadow)}
+  .rel-card .path{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent-dark); display:flex; align-items:center; gap:6px; flex-wrap:wrap}
+  .rel-card .arrow{color:var(--ink-muted)}
+  .rel-card p{font-size:13px; color:var(--ink-muted); line-height:1.55}
+
+  .trace{width:100%; border-collapse:collapse; font-size:13.5px; background:var(--surface); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow)}
+  .trace th{text-align:left; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-muted); font-weight:500; padding:12px 18px; background:var(--surface-alt); border-bottom:1px solid var(--border)}
+  .trace td{padding:12px 18px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.5}
+  .trace tr:last-child td{border-bottom:none}
+  .trace .req{font-weight:500}
+  .trace .tbls{font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--accent-dark)}
+  .trace .call{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-muted)}
+
+  footer{padding-top:20px; border-top:1px solid var(--border); font-size:12.5px; color:var(--ink-muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
+
+  @media (max-width:560px){
+    .table-card-head{flex-direction:column; align-items:flex-start}
+    .fields th:nth-child(4), .fields td:nth-child(4){display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="doc">
+    <span class="eyebrow"><span class="dot"></span>Course Project — Week 3</span>
+    <h1>RSVP App Data Design</h1>
+    <div class="meta">
+      <span><b>App</b> RSVPProject (.NET MAUI)</span>
+      <span><b>Storage</b> SQLite, on-device</span>
+      <span><b>Tables</b> 3 — Users, Events, Rsvps</span>
+    </div>
+    <p class="lede">Local storage for the RSVP app, driven directly by this week's requirements: create an account, log in against stored credentials, add and list events, and RSVP with details prefilled for a signed-in user.</p>
+  </header>
+
+  <section>
+    <div class="section-head"><span class="section-num">01</span><h2>Entity relationships</h2></div>
+    <p style="color:var(--ink-muted); font-size:14px; max-width:62ch">Two foreign keys — <code>Events.HostUserId</code> and <code>Rsvps.UserId</code> — are nullable on purpose: a guest can host an event or RSVP without ever creating an account.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+erDiagram
+    USERS ||--o{ EVENTS : hosts
+    USERS ||--o{ RSVPS : makes
+    EVENTS ||--o{ RSVPS : receives
+
+    USERS {
+        int Id PK
+        string FullName
+        string Email UK
+        string PasswordHash
+        string PasswordSalt
+        datetime CreatedAt
+    }
+    EVENTS {
+        int Id PK
+        string Title
+        datetime StartsAt
+        string Location
+        string Description
+        int HostUserId FK
+        string HostName
+        datetime CreatedAt
+    }
+    RSVPS {
+        int Id PK
+        int EventId FK
+        int UserId FK
+        string GuestName
+        string GuestEmail
+        int GuestCount
+        string Notes
+        datetime CreatedAt
+    }
+      </pre>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">02</span><h2>Tables</h2></div>
+
+    <div class="table-card">
+      <div class="table-card-head">
+        <span class="name">Users</span>
+        <span class="desc">one row per account created via "Create an account"</span>
+      </div>
+      <table class="fields">
+        <tr><th>Field</th><th>Type</th><th>Constraints</th><th>Notes</th></tr>
+        <tr><td class="fname">Id</td><td class="ftype">INTEGER</td><td><span class="badge pk">PK</span></td><td class="fnote">autoincrement</td></tr>
+        <tr><td class="fname">FullName</td><td class="ftype">TEXT</td><td>not null</td><td class="fnote">—</td></tr>
+        <tr><td class="fname">Email</td><td class="ftype">TEXT</td><td><span class="badge uk">UNIQUE</span> not null</td><td class="fnote">normalized lowercase; the login id</td></tr>
+        <tr><td class="fname">PasswordHash</td><td class="ftype">TEXT</td><td>not null</td><td class="fnote">PBKDF2-SHA256, 100k iterations — never the raw password</td></tr>
+        <tr><td class="fname">PasswordSalt</td><td class="ftype">TEXT</td><td>not null</td><td class="fnote">random 16 bytes, unique per user</td></tr>
+        <tr><td class="fname">CreatedAt</td><td class="ftype">DATETIME</td><td>not null</td><td class="fnote">—</td></tr>
+      </table>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-head">
+        <span class="name">Events</span>
+        <span class="desc">one row per event, host account optional</span>
+      </div>
+      <table class="fields">
+        <tr><th>Field</th><th>Type</th><th>Constraints</th><th>Notes</th></tr>
+        <tr><td class="fname">Id</td><td class="ftype">INTEGER</td><td><span class="badge pk">PK</span></td><td class="fnote">autoincrement</td></tr>
+        <tr><td class="fname">Title</td><td class="ftype">TEXT</td><td>not null</td><td class="fnote">—</td></tr>
+        <tr><td class="fname">StartsAt</td><td class="ftype">DATETIME</td><td>not null</td><td class="fnote">date + start time, one column</td></tr>
+        <tr><td class="fname">Location</td><td class="ftype">TEXT</td><td>not null</td><td class="fnote">—</td></tr>
+        <tr><td class="fname">Description</td><td class="ftype">TEXT</td><td>not null</td><td class="fnote">—</td></tr>
+        <tr><td class="fname">HostUserId</td><td class="ftype">INTEGER</td><td><span class="badge fk">FK → Users.Id</span> <span class="badge null">nullable</span></td><td class="fnote">null = a guest hosted it</td></tr>
+        <tr><td class="fname">HostName</td><td class="ftype">TEXT</td><td>not null</td><td class="fnote">denormalized snapshot, so guest-hosted events still display a host</td></tr>
+        <tr><td class="fname">CreatedAt</td><td class="ftype">DATETIME</td><td>not null</td><td class="fnote">—</td></tr>
+      </table>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-head">
+        <span class="name">Rsvps</span>
+        <span class="desc">one row per RSVP; also how "attending" is computed</span>
+      </div>
+      <table class="fields">
+        <tr><th>Field</th><th>Type</th><th>Constraints</th><th>Notes</th></tr>
+        <tr><td class="fname">Id</td><td class="ftype">INTEGER</td><td><span class="badge pk">PK</span></td><td class="fnote">autoincrement</td></tr>
+        <tr><td class="fname">EventId</td><td class="ftype">INTEGER</td><td><span class="badge fk">FK → Events.Id</span> not null</td><td class="fnote">—</td></tr>
+        <tr><td class="fname">UserId</td><td class="ftype">INTEGER</td><td><span class="badge fk">FK → Users.Id</span> <span class="badge null">nullable</span></td><td class="fnote">null = a guest RSVP</td></tr>
+        <tr><td class="fname">GuestName</td><td class="ftype">TEXT</td><td>not null</td><td class="fnote">prefilled from account if logged in</td></tr>
+        <tr><td class="fname">GuestEmail</td><td class="ftype">TEXT</td><td>not null</td><td class="fnote">prefilled from account if logged in</td></tr>
+        <tr><td class="fname">GuestCount</td><td class="ftype">INTEGER</td><td>not null, default 1</td><td class="fnote">—</td></tr>
+        <tr><td class="fname">Notes</td><td class="ftype">TEXT</td><td><span class="badge null">nullable</span></td><td class="fnote">optional note to the host</td></tr>
+        <tr><td class="fname">CreatedAt</td><td class="ftype">DATETIME</td><td>not null</td><td class="fnote">—</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">03</span><h2>Relationships</h2></div>
+    <div class="rel-grid">
+      <div class="rel-card">
+        <div class="path">Users <span class="arrow">1 —⟶ *</span> Events</div>
+        <p><b style="color:var(--ink)">hosts.</b> <code>Events.HostUserId</code> → <code>Users.Id</code>. Nullable so a guest can create an event with no account.</p>
+      </div>
+      <div class="rel-card">
+        <div class="path">Users <span class="arrow">1 —⟶ *</span> Rsvps</div>
+        <p><b style="color:var(--ink)">makes.</b> <code>Rsvps.UserId</code> → <code>Users.Id</code>. Nullable for the same reason — a guest can RSVP without signing up.</p>
+      </div>
+      <div class="rel-card">
+        <div class="path">Events <span class="arrow">1 —⟶ *</span> Rsvps</div>
+        <p><b style="color:var(--ink)">receives.</b> <code>Rsvps.EventId</code> → <code>Events.Id</code>. Required — every RSVP belongs to exactly one event.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">04</span><h2>Requirement → data mapping</h2></div>
+    <div style="overflow-x:auto">
+      <table class="trace">
+        <tr><th>Requirement</th><th>Table(s)</th><th>Query / command</th></tr>
+        <tr><td class="req">Add a user account</td><td class="tbls">Users</td><td class="call">AddUserAsync — hashes password, rejects duplicate email</td></tr>
+        <tr><td class="req">Log in, validated against stored credentials</td><td class="tbls">Users</td><td class="call">ValidateLoginAsync — looks up by email, verifies PBKDF2 hash</td></tr>
+        <tr><td class="req">Add an event</td><td class="tbls">Events</td><td class="call">AddEventAsync</td></tr>
+        <tr><td class="req">List all events</td><td class="tbls">Events</td><td class="call">GetAllEventsAsync, ordered by StartsAt</td></tr>
+        <tr><td class="req">List events I'm attending</td><td class="tbls">Events + Rsvps</td><td class="call">GetEventsAttendingAsync(userId)</td></tr>
+        <tr><td class="req">List events I'm hosting</td><td class="tbls">Events</td><td class="call">GetEventsHostedByAsync(userId) — HostUserId = userId</td></tr>
+        <tr><td class="req">View event details</td><td class="tbls">Events</td><td class="call">GetEventAsync(id)</td></tr>
+        <tr><td class="req">RSVP, prefilled when logged in</td><td class="tbls">Rsvps</td><td class="call">AddRsvpAsync — page prefills from AppState (from Users at login)</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <span>RSVPProject · local SQLite store · <code>rsvp.db3</code> in app data</span>
+    <span>Data Design Document</span>
+  </footer>
+
+</div>
+
+<!-- This file is opened directly (file://), so unlike the claude.ai artifact
+     it has no built-in Mermaid renderer — load it here for the ER diagram. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.15.0/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
+  });
+</script>
+</body>
+</html>

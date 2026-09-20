@@ -1,3 +1,5 @@
+using RSVPProject.Data;
+
 namespace RSVPProject;
 
 public sealed class AddUserPage : ContentPage
@@ -33,7 +35,16 @@ public sealed class AddUserPage : ContentPage
             return;
         }
 
-        await DisplayAlertAsync("User added", "Your account details are ready for the next step.", "OK");
-        await Navigation.PopAsync();
+        var db = await AppDatabase.GetAsync();
+        try
+        {
+            var user = await db.AddUserAsync(name.Text!, email.Text!, password.Text!);
+            AppState.StartUserSession(user.Id, user.FullName, user.Email);
+            await Navigation.PushAsync(new EventsPage());
+        }
+        catch (InvalidOperationException ex)
+        {
+            message.Text = ex.Message;
+        }
     }
 }

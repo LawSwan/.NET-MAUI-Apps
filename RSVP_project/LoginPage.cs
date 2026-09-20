@@ -1,3 +1,5 @@
+using RSVPProject.Data;
+
 namespace RSVPProject;
 
 public sealed class LoginPage : ContentPage
@@ -27,14 +29,16 @@ public sealed class LoginPage : ContentPage
             return;
         }
 
-        if (email.Text.Trim().Equals("demo@rsvp.app", StringComparison.OrdinalIgnoreCase) && password.Text == "rsvp123")
+        var db = await AppDatabase.GetAsync();
+        var user = await db.ValidateLoginAsync(email.Text.Trim(), password.Text!);
+        if (user is null)
         {
-            AppState.StartUserSession("Amber Lawson");
-            await Navigation.PushAsync(new EventsPage());
+            ShowError("Incorrect email or password. " + DemoHint);
             return;
         }
 
-        ShowError(DemoHint);
+        AppState.StartUserSession(user.Id, user.FullName, user.Email);
+        await Navigation.PushAsync(new EventsPage());
     }
 
     // Shown up front, in the muted purple used for secondary text — not an error yet.
