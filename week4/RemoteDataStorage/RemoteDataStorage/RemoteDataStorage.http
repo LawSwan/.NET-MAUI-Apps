@@ -1,0 +1,15 @@
+@RemoteDataStorage_HostAddress = http://localhost:5289
+
+GET {{RemoteDataStorage_HostAddress}}/api/Person
+Accept: application/json
+
+###
+
+POST {{RemoteDataStorage_HostAddress}}/api/Person
+Content-Type: application/json
+
+{
+	"firstName": "James",
+	"lastName": "Smith",
+	"doB": "2004-06-15"
+}

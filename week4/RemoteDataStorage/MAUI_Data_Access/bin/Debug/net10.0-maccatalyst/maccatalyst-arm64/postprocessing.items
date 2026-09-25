@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_PostProcessingItem Include="MAUI_Data_Access.app/Contents/MonoBundle/libe_sqlite3.dylib">
+      <ComputedRelativePath>Contents\MonoBundle/libe_sqlite3.dylib</ComputedRelativePath>
+      <DestinationSubPath>libe_sqlite3.dylib</DestinationSubPath>
+      <SourceItemGroup>_FileNativeReference</SourceItemGroup>
+      <RelativePath>Contents\MonoBundle/libe_sqlite3.dylib</RelativePath>
+      <BCSymbolMapName>libe_sqlite3.dylib.bcsymbolmap</BCSymbolMapName>
+      <ItemSourcePath>obj/Debug/net10.0-maccatalyst/maccatalyst-arm64/nativelibraries/Contents/MonoBundle/libe_sqlite3.dylib</ItemSourcePath>
+      <NuGetPackageVersion>3.53.3</NuGetPackageVersion>
+      <ReidentifiedPath>obj/Debug/net10.0-maccatalyst/maccatalyst-arm64/nativelibraries/Contents/MonoBundle/libe_sqlite3.dylib</ReidentifiedPath>
+      <PublishFolderType>DynamicLibrary</PublishFolderType>
+      <NoDSymUtil>true</NoDSymUtil>
+      <dSYMSourcePath>obj/Debug/net10.0-maccatalyst/maccatalyst-arm64/nativelibraries/Contents/MonoBundle/libe_sqlite3.dylib.dSYM</dSYMSourcePath>
+      <dSYMSourcePathExists>false</dSYMSourcePathExists>
+      <AssetType>native</AssetType>
+      <NoSymbolStrip>true</NoSymbolStrip>
+      <dSYMInfoPlistRelativePath>libe_sqlite3.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
+      <NuGetPackageId>SourceGear.sqlite3</NuGetPackageId>
+      <DSymName>libe_sqlite3.dSYM</DSymName>
+      <Kind>Dynamic</Kind>
+      <DynamicLibraryId>@executable_path/../../Contents/MonoBundle/libe_sqlite3.dylib</DynamicLibraryId>
+      <CopyLocal>true</CopyLocal>
+      <SourceProjectPath>/Users/amber/School/maui/week4/RemoteDataStorage/MAUI_Data_Access</SourceProjectPath>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <PathInPackage>runtimes/maccatalyst-arm64/native/libe_sqlite3.dylib</PathInPackage>
+    </_PostProcessingItem>
+    <_PostProcessingItem Include="MAUI_Data_Access.app/Contents/MacOS/MAUI_Data_Access">
+      <IsAppExtension>false</IsAppExtension>
+      <BCSymbolMapName>MAUI_Data_Access.bcsymbolmap</BCSymbolMapName>
+      <NoDSymUtil>true</NoDSymUtil>
+      <dSYMSourcePathExists>false</dSYMSourcePathExists>
+      <NoSymbolStrip>true</NoSymbolStrip>
+      <dSYMInfoPlistRelativePath>MAUI_Data_Access.app.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
+      <SymbolFile>/Users/amber/School/maui/week4/RemoteDataStorage/MAUI_Data_Access/obj/Debug/net10.0-maccatalyst/maccatalyst-arm64/mtouch-symbols.list</SymbolFile>
+      <DSymName>MAUI_Data_Access.app.dSYM</DSymName>
+      <SourceProjectPath>/Users/amber/School/maui/week4/RemoteDataStorage/MAUI_Data_Access</SourceProjectPath>
+      <IsXPCService></IsXPCService>
+    </_PostProcessingItem>
+  </ItemGroup>
+</Project>

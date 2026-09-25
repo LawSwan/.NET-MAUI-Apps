@@ -1,0 +1,1 @@
+-v --force --timestamp=none --sign - --entitlements /Users/amber/School/maui/week4/RemoteDataStorage/MAUI_Data_Access/obj/Debug/net10.0-maccatalyst/maccatalyst-arm64/Entitlements.xcent /Users/amber/School/maui/week4/RemoteDataStorage/MAUI_Data_Access/bin/Debug/net10.0-maccatalyst/maccatalyst-arm64/MAUI_Data_Access.app

@@ -44,6 +44,10 @@
 		<data>
 		fI641eL9jR0ctyTre3xTwKkfsn8=
 		</data>
+		<key>Resources/xml/microsoft_maui_essentials_fileprovider_file_paths.xml</key>
+		<data>
+		0ZugOR08oYUyn+ivNzk266eEOoY=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -51,14 +55,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rWZoNKjW8RHVwql+ZeWEsgnhFNJUwu8tx7t3/cBvll0=
+			exPhhSNkiVDd7ZUUwOr6BZFOSqTcD0BdCcvQtsAlpZA=
 			</data>
 		</dict>
 		<key>MonoBundle/MAUI_Data_Access.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NHVLYra02Z1Vm7W/YVBgmLh8I9v4J4rbRcFgZQ1HTFs=
+			0GxmeEeXQRT0tBhrEQgofkLQb7G1JCmVdAV1mhhcDSc=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.CSharp.dll</key>
@@ -1746,6 +1750,13 @@
 			<key>hash2</key>
 			<data>
 			rSLn1k43aQXR7mL0G0rG/4hhLC1hBtjJ3USgbIFRDnk=
+			</data>
+		</dict>
+		<key>Resources/xml/microsoft_maui_essentials_fileprovider_file_paths.xml</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			W4mBx+OWozujR6fIlOuqppzspq5DXmkX1Oo5zBuPD6Q=
 			</data>
 		</dict>
 	</dict>
