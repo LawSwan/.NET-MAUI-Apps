@@ -6,6 +6,7 @@
              x:Class="AssessmentApp.ItemsPage"
              x:DataType="vm:ItemsViewModel"
              Title="Items">
+    <!-- Data entry page: name and instructions, three input fields, Save button, list of stored items, status message. -->
     <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto" Padding="24,28" RowSpacing="10">
         <Label Text="{Binding DisplayName}" Style="{StaticResource Headline}" />
         <Label Grid.Row="1" Text="Please provide the following information:" Style="{StaticResource SubHeadline}" />
@@ -17,7 +18,8 @@
             <Label Text="Item Description" Style="{StaticResource FieldLabel}" />
             <Editor Text="{Binding ItemDescription}" Placeholder="Item Description" AutoSize="TextChanges" MinimumHeightRequest="72" />
         </VerticalStackLayout>
-        <Button Grid.Row="3" Text="Save Item" Command="{Binding SaveCommand}" Margin="0,8,0,8" />
+        <Button Grid.Row="3" Text="Save" Command="{Binding SaveCommand}" Margin="0,8,0,8" />
+        <!-- Shows every item retrieved from the web service. -->
         <CollectionView Grid.Row="4" ItemsSource="{Binding Items}" EmptyView="No items have been added yet.">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Item">
@@ -31,6 +33,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <!-- Busy spinner and the save / missing data warning message. -->
         <VerticalStackLayout Grid.Row="5" Spacing="4">
             <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
             <Label Text="{Binding Message}" TextColor="{StaticResource MessageColor}" />
