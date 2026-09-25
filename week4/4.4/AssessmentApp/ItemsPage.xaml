@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:AssessmentApp.Models"
+             xmlns:vm="clr-namespace:AssessmentApp.ViewModels"
+             x:Class="AssessmentApp.ItemsPage"
+             x:DataType="vm:ItemsViewModel"
+             Title="Items">
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto" Padding="24,28" RowSpacing="10">
+        <Label Text="{Binding DisplayName}" Style="{StaticResource Headline}" />
+        <Label Grid.Row="1" Text="Please provide the following information:" Style="{StaticResource SubHeadline}" />
+        <VerticalStackLayout Grid.Row="2" Spacing="4" Margin="0,12,0,0">
+            <Label Text="Item ID" Style="{StaticResource FieldLabel}" />
+            <Entry Text="{Binding ItemId}" Placeholder="Item ID" />
+            <Label Text="Item Name" Style="{StaticResource FieldLabel}" />
+            <Entry Text="{Binding ItemName}" Placeholder="Item Name" />
+            <Label Text="Item Description" Style="{StaticResource FieldLabel}" />
+            <Editor Text="{Binding ItemDescription}" Placeholder="Item Description" AutoSize="TextChanges" MinimumHeightRequest="72" />
+        </VerticalStackLayout>
+        <Button Grid.Row="3" Text="Save Item" Command="{Binding SaveCommand}" Margin="0,8,0,8" />
+        <CollectionView Grid.Row="4" ItemsSource="{Binding Items}" EmptyView="No items have been added yet.">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Item">
+                    <Border Stroke="{StaticResource Gray300}" StrokeShape="RoundRectangle 8" Padding="12" Margin="0,4">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="{Binding Id, StringFormat='ID: {0}'}" FontAttributes="Bold" />
+                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding Description}" TextColor="{StaticResource Gray600}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <VerticalStackLayout Grid.Row="5" Spacing="4">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+            <Label Text="{Binding Message}" TextColor="{StaticResource MessageColor}" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
