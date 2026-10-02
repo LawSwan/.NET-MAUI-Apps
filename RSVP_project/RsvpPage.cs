@@ -42,15 +42,23 @@ public sealed class RsvpPage : ContentPage
         }
 
         var db = await AppDatabase.GetAsync();
-        await db.AddRsvpAsync(new RsvpRecord
+        try
         {
-            EventId = eventRecord.Id,
-            UserId = AppState.CurrentUserId,
-            GuestName = name.Text!.Trim(),
-            GuestEmail = email.Text!.Trim(),
-            GuestCount = guestCount,
-            Notes = string.IsNullOrWhiteSpace(notes.Text) ? null : notes.Text.Trim()
-        });
+            await db.AddRsvpAsync(new RsvpRecord
+            {
+                EventId = eventRecord.Id,
+                UserId = AppState.CurrentUserId,
+                GuestName = name.Text!.Trim(),
+                GuestEmail = email.Text!.Trim(),
+                GuestCount = guestCount,
+                Notes = string.IsNullOrWhiteSpace(notes.Text) ? null : notes.Text.Trim()
+            });
+        }
+        catch (InvalidOperationException ex)
+        {
+            message.Text = ex.Message;
+            return;
+        }
 
         await DisplayAlertAsync("RSVP saved", "You're on the list for this event.", "OK");
         await Navigation.PopAsync();

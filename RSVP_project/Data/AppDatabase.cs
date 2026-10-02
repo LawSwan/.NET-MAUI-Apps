@@ -33,6 +33,10 @@ public sealed class AppDatabase
         await connection.CreateTableAsync<UserRecord>();
         await connection.CreateTableAsync<EventRecord>();
         await connection.CreateTableAsync<RsvpRecord>();
+        // One RSVP per account per event. Guest RSVPs have a NULL UserId,
+        // which SQLite treats as distinct, so guests aren't limited by this.
+        await connection.CreateIndexAsync("IX_RsvpRecord_EventId_UserId", nameof(RsvpRecord),
+            new[] { nameof(RsvpRecord.EventId), nameof(RsvpRecord.UserId) }, unique: true);
         await SeedAsync();
     }
 
@@ -123,5 +127,18 @@ public sealed class AppDatabase
 
     // ---------------- RSVPs ----------------
 
-    public Task<int> AddRsvpAsync(RsvpRecord record) => connection.InsertAsync(record);
+    /// <summary>Saves an RSVP. Throws if this account has already RSVP'd to the event.</summary>
+    public async Task<int> AddRsvpAsync(RsvpRecord record)
+    {
+        if (record.UserId is int userId)
+        {
+            var existing = await connection.Table<RsvpRecord>()
+                .Where(r => r.EventId == record.EventId && r.UserId == userId)
+                .CountAsync();
+            if (existing > 0)
+                throw new InvalidOperationException("You've already RSVP'd to this event.");
+        }
+
+        return await connection.InsertAsync(record);
+    }
 }
