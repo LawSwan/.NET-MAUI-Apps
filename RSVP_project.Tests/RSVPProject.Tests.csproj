@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.11.285" />
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.11" />
+  </ItemGroup>
+
+  <!-- Compile the app's non-UI code directly so it can be tested without the MAUI runtime. -->
+  <ItemGroup>
+    <Compile Include="..\RSVP_project\Data\**\*.cs" Link="App\Data\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="..\RSVP_project\AppState.cs" Link="App\AppState.cs" />
+  </ItemGroup>
+
+</Project>

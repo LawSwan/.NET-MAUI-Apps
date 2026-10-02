@@ -1,0 +1,37 @@
+Test run for /Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.11)
+[xUnit.net 00:00:00.03]   Discovering: RSVPProject.Tests
+[xUnit.net 00:00:00.04]   Discovered:  RSVPProject.Tests
+[xUnit.net 00:00:00.05]   Starting:    RSVPProject.Tests
+[xUnit.net 00:00:00.14]     RSVPProject.Tests.RsvpAppTests.TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored [FAIL]
+[xUnit.net 00:00:00.14]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:00.14]       Expected: 1
+[xUnit.net 00:00:00.14]       Actual:   2
+[xUnit.net 00:00:00.14]       Stack Trace:
+[xUnit.net 00:00:00.14]         /Users/amber/School/maui/RSVP_project.Tests/RsvpAppTests.cs(179,0): at RSVPProject.Tests.RsvpAppTests.TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored()
+[xUnit.net 00:00:00.14]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:00.30]   Finished:    RSVPProject.Tests
+  Passed RSVPProject.Tests.RsvpAppTests.TC02_FirstRun_SeedsDemoAccountAndEvents_AndDemoLoginSucceeds [56 ms]
+  Failed RSVPProject.Tests.RsvpAppTests.TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored [18 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   2
+  Stack Trace:
+     at RSVPProject.Tests.RsvpAppTests.TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored() in /Users/amber/School/maui/RSVP_project.Tests/RsvpAppTests.cs:line 179
+--- End of stack trace from previous location ---
+  Passed RSVPProject.Tests.RsvpAppTests.TC08_AppState_UserGuestAndLogoutTransitions [1 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC06_AddEvent_AppearsInSortedListAndInHostsEvents [18 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC03_AddUser_ThenLoginWithDifferentCaseAndSpaces_Succeeds [28 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC07_AddRsvp_ForLoggedInUser_ShowsEventInAttendingList_GuestRsvpDoesNot [14 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC05_Login_WithWrongPasswordOrUnknownEmail_ReturnsNull [25 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC01_PasswordHasher_VerifiesCorrectPassword_RejectsWrong_AndSaltsEachHash [50 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC04_AddUser_WithAlreadyRegisteredEmail_IsRejected [15 ms]
+Results File: /Users/amber/School/maui/RSVP_project.Tests/TestResults/results.trx
+
+Test Run Failed.
+Total tests: 9
+     Passed: 8
+     Failed: 1
+ Total time: 0.5278 Seconds

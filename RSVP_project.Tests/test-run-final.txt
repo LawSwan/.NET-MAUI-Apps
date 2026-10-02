@@ -1,0 +1,28 @@
+  Determining projects to restore...
+/Users/amber/School/maui/RSVP_project.Tests/RSVPProject.Tests.csproj : warning NU1903: Package 'SQLitePCLRaw.lib.e_sqlite3' 2.1.11 has a known high severity vulnerability, https://github.com/advisories/GHSA-2m69-gcr7-jv3q
+  All projects are up-to-date for restore.
+/Users/amber/School/maui/RSVP_project.Tests/RSVPProject.Tests.csproj : warning NU1903: Package 'SQLitePCLRaw.lib.e_sqlite3' 2.1.11 has a known high severity vulnerability, https://github.com/advisories/GHSA-2m69-gcr7-jv3q
+  RSVPProject.Tests -> /Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll
+Test run for /Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.11)
+[xUnit.net 00:00:00.03]   Discovering: RSVPProject.Tests
+[xUnit.net 00:00:00.04]   Discovered:  RSVPProject.Tests
+[xUnit.net 00:00:00.05]   Starting:    RSVPProject.Tests
+  Passed RSVPProject.Tests.RsvpAppTests.TC02_FirstRun_SeedsDemoAccountAndEvents_AndDemoLoginSucceeds [58 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored [18 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC08_AppState_UserGuestAndLogoutTransitions [1 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC06_AddEvent_AppearsInSortedListAndInHostsEvents [18 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC03_AddUser_ThenLoginWithDifferentCaseAndSpaces_Succeeds [27 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC07_AddRsvp_ForLoggedInUser_ShowsEventInAttendingList_GuestRsvpDoesNot [15 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC05_Login_WithWrongPasswordOrUnknownEmail_ReturnsNull [26 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC10_AddRsvp_MultipleGuestsSameEvent_AllStored [1 ms]
+  Passed RSVPProject.Tests.RsvpAppTests.TC01_PasswordHasher_VerifiesCorrectPassword_RejectsWrong_AndSaltsEachHash [53 ms]
+[xUnit.net 00:00:00.31]   Finished:    RSVPProject.Tests
+  Passed RSVPProject.Tests.RsvpAppTests.TC04_AddUser_WithAlreadyRegisteredEmail_IsRejected [16 ms]
+Results File: /Users/amber/School/maui/RSVP_project.Tests/TestResults/results-final.trx
+
+Test Run Successful.
+Total tests: 10
+     Passed: 10
+ Total time: 0.5234 Seconds

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e2d6a389-0f6a-4524-aa22-2f5301346729" name="@Ambers-MacBook-Pro 2026-10-02 10:36:19" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-02T10:36:19.5663650-04:00" queuing="2026-10-02T10:36:19.5663660-04:00" start="2026-10-02T10:36:19.0349510-04:00" finish="2026-10-02T10:36:19.5688190-04:00" />
+  <TestSettings name="default" id="4d66e9d6-5b18-4563-8620-eddb7d06d8d6">
+    <Deployment runDeploymentRoot="_Ambers-MacBook-Pro_2026-10-02_10_36_19" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="767f5d6e-501a-4bf4-8565-ffe065f4c147" testId="9d2ee66b-7eb8-7803-5db1-74b4a55a3df0" testName="RSVPProject.Tests.RsvpAppTests.TC06_AddEvent_AppearsInSortedListAndInHostsEvents" computerName="Ambers-MacBook-Pro" duration="00:00:00.0187267" startTime="2026-10-02T10:36:19.3688820-04:00" endTime="2026-10-02T10:36:19.3868620-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="767f5d6e-501a-4bf4-8565-ffe065f4c147" />
+    <UnitTestResult executionId="ecb8ea7b-7ae4-4b20-beb2-465503e95e5a" testId="f1d17d6e-c8e4-e5b8-bbd9-7f7c78406990" testName="RSVPProject.Tests.RsvpAppTests.TC08_AppState_UserGuestAndLogoutTransitions" computerName="Ambers-MacBook-Pro" duration="00:00:00.0016070" startTime="2026-10-02T10:36:19.3687610-04:00" endTime="2026-10-02T10:36:19.3687920-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ecb8ea7b-7ae4-4b20-beb2-465503e95e5a" />
+    <UnitTestResult executionId="006b99c1-c88f-4ddb-8d79-4fb218c4bd3a" testId="5645eb72-58f3-6074-964c-268b931b19d3" testName="RSVPProject.Tests.RsvpAppTests.TC02_FirstRun_SeedsDemoAccountAndEvents_AndDemoLoginSucceeds" computerName="Ambers-MacBook-Pro" duration="00:00:00.0566920" startTime="2026-10-02T10:36:19.2835520-04:00" endTime="2026-10-02T10:36:19.3434170-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="006b99c1-c88f-4ddb-8d79-4fb218c4bd3a" />
+    <UnitTestResult executionId="b1e34380-f468-4190-8af5-849948d798a5" testId="6b7102ec-af02-9330-cc10-92ecdb36b6ce" testName="RSVPProject.Tests.RsvpAppTests.TC05_Login_WithWrongPasswordOrUnknownEmail_ReturnsNull" computerName="Ambers-MacBook-Pro" duration="00:00:00.0255069" startTime="2026-10-02T10:36:19.4296960-04:00" endTime="2026-10-02T10:36:19.4552520-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b1e34380-f468-4190-8af5-849948d798a5" />
+    <UnitTestResult executionId="a8e512d7-2add-481d-8b4b-50aa0a44cb09" testId="55d8c9d1-115b-d6c9-34c9-198c81629c55" testName="RSVPProject.Tests.RsvpAppTests.TC04_AddUser_WithAlreadyRegisteredEmail_IsRejected" computerName="Ambers-MacBook-Pro" duration="00:00:00.0150010" startTime="2026-10-02T10:36:19.5060160-04:00" endTime="2026-10-02T10:36:19.5210470-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a8e512d7-2add-481d-8b4b-50aa0a44cb09" />
+    <UnitTestResult executionId="fb4d3ee6-5eaf-4a08-a608-f90f5ee864cc" testId="366ade7d-56ff-46df-9c86-c9631c663be4" testName="RSVPProject.Tests.RsvpAppTests.TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored" computerName="Ambers-MacBook-Pro" duration="00:00:00.0184054" startTime="2026-10-02T10:36:19.3472430-04:00" endTime="2026-10-02T10:36:19.3664980-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fb4d3ee6-5eaf-4a08-a608-f90f5ee864cc">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   2</Message>
+          <StackTrace>   at RSVPProject.Tests.RsvpAppTests.TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored() in /Users/amber/School/maui/RSVP_project.Tests/RsvpAppTests.cs:line 179
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="db6cae81-5908-4057-9823-1ca8955cdec4" testId="788de7b1-741a-5d0e-af38-afea5b33258b" testName="RSVPProject.Tests.RsvpAppTests.TC03_AddUser_ThenLoginWithDifferentCaseAndSpaces_Succeeds" computerName="Ambers-MacBook-Pro" duration="00:00:00.0281363" startTime="2026-10-02T10:36:19.3869460-04:00" endTime="2026-10-02T10:36:19.4151260-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="db6cae81-5908-4057-9823-1ca8955cdec4" />
+    <UnitTestResult executionId="e582018d-694a-4496-ac5e-89ece3df6614" testId="a594e2e2-dacf-7fe7-dc45-c93737ff8cd7" testName="RSVPProject.Tests.RsvpAppTests.TC01_PasswordHasher_VerifiesCorrectPassword_RejectsWrong_AndSaltsEachHash" computerName="Ambers-MacBook-Pro" duration="00:00:00.0506842" startTime="2026-10-02T10:36:19.4553210-04:00" endTime="2026-10-02T10:36:19.5059570-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e582018d-694a-4496-ac5e-89ece3df6614" />
+    <UnitTestResult executionId="dee57927-8de5-42bc-bffc-f2763da0490f" testId="8e6ecad8-38ee-5dd2-f8cf-5af1a3ac7b8f" testName="RSVPProject.Tests.RsvpAppTests.TC07_AddRsvp_ForLoggedInUser_ShowsEventInAttendingList_GuestRsvpDoesNot" computerName="Ambers-MacBook-Pro" duration="00:00:00.0144157" startTime="2026-10-02T10:36:19.4151980-04:00" endTime="2026-10-02T10:36:19.4296330-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dee57927-8de5-42bc-bffc-f2763da0490f" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="RSVPProject.Tests.RsvpAppTests.TC07_AddRsvp_ForLoggedInUser_ShowsEventInAttendingList_GuestRsvpDoesNot" storage="/users/amber/school/maui/rsvp_project.tests/bin/debug/net10.0/rsvpproject.tests.dll" id="8e6ecad8-38ee-5dd2-f8cf-5af1a3ac7b8f">
+      <Execution id="dee57927-8de5-42bc-bffc-f2763da0490f" />
+      <TestMethod codeBase="/Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="RSVPProject.Tests.RsvpAppTests" name="TC07_AddRsvp_ForLoggedInUser_ShowsEventInAttendingList_GuestRsvpDoesNot" />
+    </UnitTest>
+    <UnitTest name="RSVPProject.Tests.RsvpAppTests.TC02_FirstRun_SeedsDemoAccountAndEvents_AndDemoLoginSucceeds" storage="/users/amber/school/maui/rsvp_project.tests/bin/debug/net10.0/rsvpproject.tests.dll" id="5645eb72-58f3-6074-964c-268b931b19d3">
+      <Execution id="006b99c1-c88f-4ddb-8d79-4fb218c4bd3a" />
+      <TestMethod codeBase="/Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="RSVPProject.Tests.RsvpAppTests" name="TC02_FirstRun_SeedsDemoAccountAndEvents_AndDemoLoginSucceeds" />
+    </UnitTest>
+    <UnitTest name="RSVPProject.Tests.RsvpAppTests.TC08_AppState_UserGuestAndLogoutTransitions" storage="/users/amber/school/maui/rsvp_project.tests/bin/debug/net10.0/rsvpproject.tests.dll" id="f1d17d6e-c8e4-e5b8-bbd9-7f7c78406990">
+      <Execution id="ecb8ea7b-7ae4-4b20-beb2-465503e95e5a" />
+      <TestMethod codeBase="/Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="RSVPProject.Tests.RsvpAppTests" name="TC08_AppState_UserGuestAndLogoutTransitions" />
+    </UnitTest>
+    <UnitTest name="RSVPProject.Tests.RsvpAppTests.TC01_PasswordHasher_VerifiesCorrectPassword_RejectsWrong_AndSaltsEachHash" storage="/users/amber/school/maui/rsvp_project.tests/bin/debug/net10.0/rsvpproject.tests.dll" id="a594e2e2-dacf-7fe7-dc45-c93737ff8cd7">
+      <Execution id="e582018d-694a-4496-ac5e-89ece3df6614" />
+      <TestMethod codeBase="/Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="RSVPProject.Tests.RsvpAppTests" name="TC01_PasswordHasher_VerifiesCorrectPassword_RejectsWrong_AndSaltsEachHash" />
+    </UnitTest>
+    <UnitTest name="RSVPProject.Tests.RsvpAppTests.TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored" storage="/users/amber/school/maui/rsvp_project.tests/bin/debug/net10.0/rsvpproject.tests.dll" id="366ade7d-56ff-46df-9c86-c9631c663be4">
+      <Execution id="fb4d3ee6-5eaf-4a08-a608-f90f5ee864cc" />
+      <TestMethod codeBase="/Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="RSVPProject.Tests.RsvpAppTests" name="TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored" />
+    </UnitTest>
+    <UnitTest name="RSVPProject.Tests.RsvpAppTests.TC06_AddEvent_AppearsInSortedListAndInHostsEvents" storage="/users/amber/school/maui/rsvp_project.tests/bin/debug/net10.0/rsvpproject.tests.dll" id="9d2ee66b-7eb8-7803-5db1-74b4a55a3df0">
+      <Execution id="767f5d6e-501a-4bf4-8565-ffe065f4c147" />
+      <TestMethod codeBase="/Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="RSVPProject.Tests.RsvpAppTests" name="TC06_AddEvent_AppearsInSortedListAndInHostsEvents" />
+    </UnitTest>
+    <UnitTest name="RSVPProject.Tests.RsvpAppTests.TC04_AddUser_WithAlreadyRegisteredEmail_IsRejected" storage="/users/amber/school/maui/rsvp_project.tests/bin/debug/net10.0/rsvpproject.tests.dll" id="55d8c9d1-115b-d6c9-34c9-198c81629c55">
+      <Execution id="a8e512d7-2add-481d-8b4b-50aa0a44cb09" />
+      <TestMethod codeBase="/Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="RSVPProject.Tests.RsvpAppTests" name="TC04_AddUser_WithAlreadyRegisteredEmail_IsRejected" />
+    </UnitTest>
+    <UnitTest name="RSVPProject.Tests.RsvpAppTests.TC03_AddUser_ThenLoginWithDifferentCaseAndSpaces_Succeeds" storage="/users/amber/school/maui/rsvp_project.tests/bin/debug/net10.0/rsvpproject.tests.dll" id="788de7b1-741a-5d0e-af38-afea5b33258b">
+      <Execution id="db6cae81-5908-4057-9823-1ca8955cdec4" />
+      <TestMethod codeBase="/Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="RSVPProject.Tests.RsvpAppTests" name="TC03_AddUser_ThenLoginWithDifferentCaseAndSpaces_Succeeds" />
+    </UnitTest>
+    <UnitTest name="RSVPProject.Tests.RsvpAppTests.TC05_Login_WithWrongPasswordOrUnknownEmail_ReturnsNull" storage="/users/amber/school/maui/rsvp_project.tests/bin/debug/net10.0/rsvpproject.tests.dll" id="6b7102ec-af02-9330-cc10-92ecdb36b6ce">
+      <Execution id="b1e34380-f468-4190-8af5-849948d798a5" />
+      <TestMethod codeBase="/Users/amber/School/maui/RSVP_project.Tests/bin/Debug/net10.0/RSVPProject.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="RSVPProject.Tests.RsvpAppTests" name="TC05_Login_WithWrongPasswordOrUnknownEmail_ReturnsNull" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="9d2ee66b-7eb8-7803-5db1-74b4a55a3df0" executionId="767f5d6e-501a-4bf4-8565-ffe065f4c147" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f1d17d6e-c8e4-e5b8-bbd9-7f7c78406990" executionId="ecb8ea7b-7ae4-4b20-beb2-465503e95e5a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5645eb72-58f3-6074-964c-268b931b19d3" executionId="006b99c1-c88f-4ddb-8d79-4fb218c4bd3a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b7102ec-af02-9330-cc10-92ecdb36b6ce" executionId="b1e34380-f468-4190-8af5-849948d798a5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55d8c9d1-115b-d6c9-34c9-198c81629c55" executionId="a8e512d7-2add-481d-8b4b-50aa0a44cb09" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="366ade7d-56ff-46df-9c86-c9631c663be4" executionId="fb4d3ee6-5eaf-4a08-a608-f90f5ee864cc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="788de7b1-741a-5d0e-af38-afea5b33258b" executionId="db6cae81-5908-4057-9823-1ca8955cdec4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a594e2e2-dacf-7fe7-dc45-c93737ff8cd7" executionId="e582018d-694a-4496-ac5e-89ece3df6614" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8e6ecad8-38ee-5dd2-f8cf-5af1a3ac7b8f" executionId="dee57927-8de5-42bc-bffc-f2763da0490f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="9" executed="9" passed="8" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.11)
+[xUnit.net 00:00:00.03]   Discovering: RSVPProject.Tests
+[xUnit.net 00:00:00.04]   Discovered:  RSVPProject.Tests
+[xUnit.net 00:00:00.05]   Starting:    RSVPProject.Tests
+[xUnit.net 00:00:00.14]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:00.14]       Expected: 1
+[xUnit.net 00:00:00.14]       Actual:   2
+[xUnit.net 00:00:00.14]       Stack Trace:
+[xUnit.net 00:00:00.14]         /Users/amber/School/maui/RSVP_project.Tests/RsvpAppTests.cs(179,0): at RSVPProject.Tests.RsvpAppTests.TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored()
+[xUnit.net 00:00:00.14]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:00.30]   Finished:    RSVPProject.Tests
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="Ambers-MacBook-Pro" outcome="Error" timestamp="2026-10-02T10:36:19.3677550-04:00">
+        <Text>[xUnit.net 00:00:00.14]     RSVPProject.Tests.RsvpAppTests.TC09_AddRsvp_SameUserSameEventTwice_OnlyOneRsvpStored [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
